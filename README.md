@@ -19,8 +19,6 @@ Handling Null Values and Outliers: We tackled null values innovatively by labeli
 
 Feature Engineering: The construction of dummy variables for SNAP days and the transformation of weekdays and months into cyclical features were pivotal in reflecting sales patterns. Normalizing sales data within the range of 0 to 1 further stabilized model input.
 
-Lag Features and Transposition: Integrating lag features accounted for the sales increase observed 1-2 days before events. We also transposed the dataset, ensuring that each row represented a day's sales for all 2,260 products, facilitating a more effective forecasting process.
-
 # Predictive Modeling:
 Sequence Data Preparation: By analyzing the sales data of the previous 28 days, we created sequences to forecast sales for the 29th day, effectively capturing the temporal dependencies in the sales data.
 
