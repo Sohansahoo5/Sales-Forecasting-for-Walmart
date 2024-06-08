@@ -1,38 +1,30 @@
 # Sales-Forecasting-for-Walmart
-# Executive Overview
+# Situation
+Walmart needed a robust sales forecasting system to optimize inventory management and marketing strategies across multiple stores. The objective was to predict daily sales for the next 28 days for products in the "Hobbies" category across stores in California, incorporating influences like promotions, seasonal trends, and special events.
 
-The project involves developing a sales forecasting model for Walmart, aiming to predict daily sales over the next 28 days. We developed a sophisticated forecasting model that synergistically used the strengths of Long Short-Term Memory (LSTM). This initiative aimed to revolutionize inventory management, optimize resource allocation, and significantly enhance customer satisfaction with accurate predictions of sales demand. The culmination of this effort is detailed in this report, which outlines the journey of analysis, the strategic insights obtained, and the resulting impact on Walmart's business operations. The data encompasses multiple stores across different states, categories, and includes variables like promotions (SNAP), seasonality, and special events. The initial scope included data from 3,049 products across 10 stores in 3 categories and 3 states. This was narrowed down to 2,260 products from 3 stores in one category (Hobbies) in California.
+# Task
+The task was to develop and implement a machine learning model that could accurately forecast sales using historical sales data and calendar information, such as special events and SNAP promotions. The model needed to handle the complexities of varying sales patterns and provide actionable insights to improve business decisions.
 
-# Exploratory Data Analysis (EDA) Insights:
-The EDA phase was instrumental in uncovering critical insights that informed our predictive models:
+# Action
+# Data Preparation and Feature Engineering:
 
-Seasonality and Peak Sales: A consistent pattern was discovered across various categories, where peak sales months remained steady, highlighting the significant role of seasonality in sales trends.
+Data Collection: Sales and calendar data were collected, with sales data spanning from 2011 to 2016. Initial data exploration was conducted to understand key trends and anomalies.
+Data Cleaning and Preparation: The calendar data was cleaned, and missing values were filled. Sales data was filtered to focus only on relevant products, stores, and years. The dataset was then transformed to align sales with calendar features.
+Outlier Handling: Sales data outliers were capped at the 75th percentile to reduce the impact of extreme values.
+Normalization: Data was normalized to aid in the model's learning process.
+Cyclical Features: Day of the week and month were encoded using sine and cosine transformations to capture their cyclical nature, essential for modeling seasonal trends in sales.
+Categorical Encoding: Event types were one-hot encoded to transform nominal categorical data into a format suitable for modeling.
 
-Event-Driven Sales Variability: Our analysis observed a substantial increase in sales during sports and cultural events, pinpointing these as major drivers of consumer spending. In contrast, sales volume decreased on national or religious holidays, suggesting store closures impact sales performance.
+# Model Development and Evaluation:
+Model Architecture: Various LSTM models, including simple and bidirectional configurations, were evaluated to determine the best fit for the forecasting task. Bidirectional LSTMs were particularly focused on for their ability to capture temporal dependencies both forwards and backwards in time.
+Training and Validation: The models were trained on a sequence of sales data prepared as 28-day blocks to predict sales for the subsequent day, simulating the real-world forecasting scenario. Model performance was validated using a split of training and test data.
+Performance Metrics: Models were assessed using Mean Absolute Percentage Error (MAPE) and Root Mean Squared Error (RMSE) to evaluate accuracy and reliability.
+Result
 
-SNAP Days and Weekends: Further insights revealed increased sales activity on SNAP benefit days and weekends, indicating the critical times for heightened sales focus in our forecasting models.
+Model Performance: The best-performing models achieved an RMSE as low as 0.92 and a MAPE around 18%, indicating a moderately high accuracy in the context of retail sales forecasting, which typically deals with high variability.
 
-# Data Preprocessing and Preparation:
-A comprehensive data preprocessing and preparation strategy was crucial for ensuring the accuracy of our predictive models:
+Visualization and Analysis: Predictions were visualized against actual sales to demonstrate the model's effectiveness, providing clear insights into the model's predictive accuracy and areas for improvement.
+Future Recommendations: The project outlined steps for future improvement, including expanding the model to cover more geographical locations and product categories, and continuous model refinement through additional data and advanced modeling techniques.
 
-Handling Null Values and Outliers: We tackled null values innovatively by labeling them as "None" in the calendar data, while capping outliers above the 75th percentile to mitigate data skewness. Negative sales values were adjusted to zero to maintain data consistency.
-
-Feature Engineering: The construction of dummy variables for SNAP days and the transformation of weekdays and months into cyclical features were pivotal in reflecting sales patterns. Normalizing sales data within the range of 0 to 1 further stabilized model input.
-
-# Predictive Modeling:
-Sequence Data Preparation: By analyzing the sales data of the previous 28 days, we created sequences to forecast sales for the 29th day, effectively capturing the temporal dependencies in the sales data.
-
-Modeling Approaches: Our team explored two modeling strategies—one that disregarded the sales increase before event days and one that included it. This comparative approach was vital in assessing the impact of anticipatory buying behavior on forecast accuracy.
-
-Multiple models were trained, evaluated, and refined:
-
-Model Architectures: Explored combinations of LSTM and CNN layers, adjusting for hyperparameters to optimize performance.
-
-Performance Metrics: Models were rigorously evaluated using MAPE and RMSE, guiding iterative improvements towards the optimal model.
-
-# Results
-The project culminated in the development of a highly effective sales forecasting model:
-
-Best-Performing Model: A blend of CNN (64 filters) and LSTM layers emerged as the most accurate, achieving a desirable balance between computational efficiency and forecasting precision.
-
-Accuracy Metrics: The leading model attained a MAPE of 54.207% and an RMSE of 0.934, setting a benchmark for future enhancements.
+# Conclusion
+The Walmart Sales Forecasting project successfully implemented a sophisticated LSTM-based model capable of handling complex patterns in sales data influenced by promotions, seasonal trends, and events. The model provided actionable insights, enabling better inventory and marketing decisions, thereby aligning with Walmart's strategic business objectives. Future enhancements are focused on scalability and ongoing refinement to maintain relevance and accuracy in a changing retail environment.
